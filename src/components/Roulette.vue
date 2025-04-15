@@ -107,20 +107,12 @@ watch(filteredItems, (newItems) => {
 })
 
 const clearSelections = () => {
-    // Restablecer selecciones
     selectedColor.value = null
     selectedParImpar.value = null
     selectedItems.value = []
-
-    // Restablecer tipo de apuesta
     tipoApuestaActual.value = null
-
-    // Desbloquear todas las opciones
     noSelectionLocked.value = false
 
-    // Remover referencias no utilizadas
-    // colorsLocked y ParImparLocked no son necesarios ya que
-    // la lógica de bloqueo se maneja con noSelectionLocked
 }
 
 const filterByColor = (color) => {
@@ -205,10 +197,8 @@ const girarRuleta = async () => {
 
         let premio = 0
         let montoActual = store.saldo
-        // console.log('Monto actual:', montoActual)
 
         if (store.jugadorNuevo) {
-            // console.log(montoActual)
             if (esGanador) {
                 premio = calcularMontoPremioLocal(store.apuesta, tipoApuestaActual.value)
                 montoActual = montoActual + store.apuesta + premio

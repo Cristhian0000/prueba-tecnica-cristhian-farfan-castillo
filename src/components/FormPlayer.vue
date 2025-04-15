@@ -129,44 +129,7 @@ const comenzarJuego = async () => {
     store.setApuesta(apuestaInicial.value)
     emit('comenzarJuego', true)
 }
-// const cargarSaldo = async () => {
-//     try {
-//         console.log(store.jugadorNuevo)
-//         if (store.jugadorNuevo) {
-//             tieneSaldo.value = true;
-//             store.setSaldo(saldo.value)
-//             store.setApuesta(apuestaInicial.value)
 
-//             return
-//         }
-//         const response = await fetch('https://localhost:44382/Usuario/CargarSaldo', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({
-//                 nombre: nombre.value,
-//                 monto: saldo.value
-//             })
-//         });
-
-//         if (!response.ok) {
-//             throw new Error('Error al cargar el saldo');
-//         }
-
-//         const data = await response.json();
-//         const { success, monto, message } = data;
-//         if (success) {
-//             tieneSaldo.value = true;
-//             saldo.value = monto;
-//             mostrarModal('Éxito', message, 'Continuar');
-//         } else {
-//             mostrarModal('Error', message, 'Entendido');
-//         }
-
-//     } catch (error) {
-//         console.error(error);
-//         mostrarModal('Error', 'Error al cargar el saldo', 'Entendido');
-//     }
-// }
 const handleCargarSaldo = async () => {
     if (store.jugadorNuevo) {
         const result = await store.cargarSaldo(saldo.value, nombre.value, true);
